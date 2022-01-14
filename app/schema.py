@@ -1,3 +1,4 @@
+from fastapi import status, HTTPException
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
@@ -72,4 +73,7 @@ class Vote(BaseModel):
         if value in chars:
             return value
 
-        raise DirFormatError(value=value, message="Dir should be either -1, 0 or 1")
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"dir should be either -1, 0, or 1",
+        )
