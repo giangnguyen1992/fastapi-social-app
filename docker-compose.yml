@@ -1,0 +1,28 @@
+version: "3"
+services:
+  api:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password123
+      - DATABASE_NAME=fastapi-social-app
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=a736b9ebb66c816be603a639397e6df486618a0f2c731de7118c6143dcb057c6
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=fastapi-social-app
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
