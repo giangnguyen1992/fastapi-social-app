@@ -20,6 +20,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+async def root():
+    return {"Welcome": "to root"}
+
+
 app.include_router(posts.router)
 app.include_router(users.router)
 app.include_router(auth.router)
