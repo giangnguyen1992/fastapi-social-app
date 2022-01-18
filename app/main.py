@@ -23,7 +23,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"Welcome": "to root!!!! ACTIONS1"}
+    return {"Welcome": "to root!!!! ACTIONS1 && UBUNTU"}
 
 
 app.include_router(posts.router)
