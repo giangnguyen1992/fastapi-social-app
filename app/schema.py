@@ -2,9 +2,7 @@ from fastapi import status, HTTPException
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-
 import pydantic
-from sqlalchemy import true
 
 
 class DirFormatError(Exception):
